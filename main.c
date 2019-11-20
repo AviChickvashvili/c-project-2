@@ -6,11 +6,14 @@
 int main()
 {
     bool run = true;
+
+    printf;
     double in_deposit;
     double in_withdraw;
     int account_id;
     char choice;
     //while (run)
+    
     do
     {
         printf("\nList of Bank Operations: \nO: Open new bank account & first deposit"
@@ -20,11 +23,6 @@ int main()
          scanf(" %c", &choice);
         while(getchar()!='\n');
     
-
-
-
-
-
 
         switch (choice)
         {
@@ -38,9 +36,11 @@ int main()
                 while (getchar() != '\n');
             }
            }while(in_deposit<0);
+            
             open_BankAcc(in_deposit);           
+            
             break;
-/*
+
         case 'B':
 
             do
@@ -51,46 +51,43 @@ int main()
 
             } while (account_id < 901 || account_id > 950);
 
-            ans = check_Balance(account_id, num_rows, num_cols, Bank);
-
-            if (ans == -1)
-            {
-                printf("\n**** ERR : srry this bank account id does not exist ****\n");
-            }
+            check_Balance(account_id);
 
             break;
 
         case 'D':
+          
             do
-            {
-                
+            { 
                 printf("Please enter your bank account id (901-950):");
                 scanf("%d", &account_id);
                 while (getchar() != '\n');
 
             } while (account_id < 901 || account_id > 950);
 
-            printf("Pleas enter deposit : ");
+            
+            do{
+                printf("Pleas enter deposit (cant be negative) : ");
             while (scanf("%lf", &in_deposit) != 1)
             {
-                printf("Pleas enter deposit : ");
+                printf("Pleas enter deposit (cant be negative) : ");
                 scanf("%lf", &in_deposit);
-                while (getchar() != '\n')
-                    ;
+                while (getchar() != '\n');
             }
-            ans = new_Deposit(account_id, in_deposit, num_rows, num_cols, Bank);
+            }while(in_deposit<0);
+            new_Deposit(account_id, in_deposit);
 
-            if (ans == -1)
-            {
-                printf("\n**** ERR : srry this bank account id does not exist ****\n");
-            }
-            else if (ans == -2)
-            {
-                printf("\n**** ERR : deposit cant be negative ****\n");
-            }
+            // if (ans == -1)
+            // {
+            //     printf("\n**** ERR : srry this bank account id does not exist ****\n");
+            // }
+            // else if (ans == -2)
+            // {
+            //     printf("\n**** ERR : deposit cant be negative ****\n");
+            // }
 
             break;
-
+/*
         case 'W':
             do
             {
