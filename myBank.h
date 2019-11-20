@@ -2,7 +2,7 @@
 #define  _myBank_h_
     //at 0 - will be balance
     //at 1 - will be banks id's
-extern double bank[2][50];
+extern double bank[2][2];
 
 //1. opens new bank account ONLY if there is less than 50
 //2. prints the new bank account id

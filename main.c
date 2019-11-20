@@ -20,17 +20,24 @@ int main()
          scanf(" %c", &choice);
         while(getchar()!='\n');
     
+
+
+
+
+
+
         switch (choice)
         {
         case 'O':
-
-            printf("Opening new account ,Pleas enter deposit (cant be negative): ");
+           do{
+               printf("Opening new account ,Pleas enter deposit (cant be negative): ");
             while (scanf("%lf", &in_deposit) != 1)
             {
-                printf("Opening new account ,Pleas enter deposit : ");
+                printf("Opening new account ,Pleas enter deposit (cant be negative): ");
                 scanf("%lf", &in_deposit);
                 while (getchar() != '\n');
             }
+           }while(in_deposit<0);
             open_BankAcc(in_deposit);           
             break;
 /*

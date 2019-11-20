@@ -4,43 +4,27 @@
 
 //at 0 - will be balance
 //at 1 - will be banks id's
-double bank[2][50];
+double bank[2][2];
 
 void open_BankAcc(double deposit)
 {
-    if (deposit < 0)
+    bool opened = false;
+
+    for (int i = 0; i < 2 && opened == false; i++)
     {
-        printf("\n\ndeposit cant be negative value\n\n");
-    }
-    else
-    {
-        bool opened = false;
-     
-        for (int i = 0; i < 50 && opened == false; i++)
+        if (bank[1][i] == 0)
         {
-            if (bank[1][i] == 0)
-            {   
-                bank[1][i] = (int)(i + 901);
-                bank[0][i] = bank[0][i] + deposit;
-                int new_id = (int)bank[1][i];
-                printf("New account id: %d\nNew balance is: %.2lf \n",new_id , bank[0][i]);
-                opened = true;                  
-            }
-            else
-            {
-                printf("cant open new account The bank is full\n");
-            }
+            bank[1][i] = (int)(i + 901);
+            bank[0][i] = bank[0][i] + deposit;
+            int new_id = (int)bank[1][i];
+            printf("\n-[ New account id: %d ]-    -[ New balance is: %.2lf ]- \n", new_id, bank[0][i]);
+            opened = true;
         }
     }
-
-    /*if (ans == -1)  
-            {
-                printf("\n**** ERR : srry the bank is full ****\n");
-            }
-            else if (ans == -2)
-            {
-                printf("**** ERR : deposit cant be negative **** \n\n");
-            }*/
+    if (opened == false)
+    {
+        printf("\n-[ srry the bank is full ]-\n");
+    }
 }
 
 int check_Balance(int account_id, int num_rows, int num_cols, double bank[][num_cols])
