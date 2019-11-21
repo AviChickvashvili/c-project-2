@@ -22,18 +22,18 @@ void new_Deposit(int account_id , double deposit);
 //1. gets bank account id 
 //2. prints the New balance of the account After the withdraw
 //3. this action is only available if the bank account status is 
-int new_Withdraw(int account_id , double withdraw ,int num_rows,int num_cols, double bank[][num_cols]);
+void new_Withdraw(int account_id, double in_withdraw);
 
 //1. closes the bank id 
 //2. this action is only available if the bank account status is 
-void close_Account(int account_id ,int num_rows,int num_cols, int bank[][num_cols]);
+void close_Account(int account_id);
 
 //1. this action is only available if the bank account status is 
-void add_interest(double interest_precent ,int num_rows,int num_cols, double bank[][num_cols]);
+void add_interest(double interest_precent);
 
 //1. prints all the opened accounts and their current balance
-void print_accounts(int num_rows,int num_cols, double bank[][num_cols]);
+void print_accounts();
 
 //1. closes all the bank accounts and shuts down the program
-void close_bank(int num_rows,int num_cols, double bank[][num_cols]);
+void close_bank();
 #endif

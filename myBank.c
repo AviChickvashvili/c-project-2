@@ -66,31 +66,89 @@ void new_Deposit(int account_id, double deposit)
     }
 }
 
-int new_Withdraw(int account_id, double withdraw, int num_rows, int num_cols, double bank[][num_cols])
+void new_Withdraw(int account_id, double in_withdraw)
 {
 
-    if (account_id < 901 || account_id > 950)
-    {
-        return -1;
-    }
-    if (withdraw < 0)
-    {
-        return -2;
-    }
-
-    for (int i = 0; i < num_cols; i++)
+    for (int i = 0; i < 50 ; i++)
     {
         if (bank[1][i] == account_id)
         {
-            if ((bank[0][i] - withdraw) >= 0)
+            if (bank[0][i] >= in_withdraw)
             {
-                bank[0][i] = bank[0][i] - withdraw;
-                printf("\nthe new Balance is : %.2lf\n", bank[0][i]);
+                bank[0][i] = bank[0][i] - in_withdraw;
+                printf("\n-[ the new Balance is : %.2lf ]-\n", bank[0][i]);
             }
             else
             {
-                return -3;
+                printf("\n-[ not eough funds you only have : %.2lf in your account number : %d ]-\n", bank[0][i],account_id);
             }
         }
     }
+}
+
+void close_Account(int account_id)
+{
+    bool closed = false;
+    for (int i = 0; i < 50 ; i++)
+    {
+        if(bank[1][i] == account_id )
+        {
+            bank[0][i]=0;
+            bank[1][i]=0;
+            printf("\n-[ account id : %d is now closed. ]-\n" , account_id);
+            closed = true;
+        }
+    }
+    if(closed == false)
+    {
+        printf("\n-[ The bank id does not exist ]-\n");
+    }
+}
+
+void add_interest(double interest_precent)
+{
+    if(interest_precent == 0)
+    {
+        interest_precent = 0;
+    }
+    else
+    {
+    interest_precent = interest_precent/100 ;
+    }
+    for (int i = 0; i < 50 ; i++)
+    {
+        double ans = interest_precent*bank[0][i];
+        bank[0][i] = bank[0][i] + ans ;
+        if( (int)bank[1][i] == 0 ) {}
+        else
+        {
+            printf("\n-[ Account id: %d ]-    -[ balance is: %.2lf ]- ", (int)bank[1][i], bank[0][i]);
+        }
+    }
+    
+}
+
+void print_accounts()
+{
+    
+    for (int i = 0; i < 50 ; i++)
+    {
+        if( (int)bank[1][i] == 0 ) {}
+        else
+        {
+            printf("\n-[ Account id: %d ]-    -[ balance is: %.2lf ]- ", (int)bank[1][i], bank[0][i]);
+        }
+    }
+}
+
+void close_bank()
+{
+    for (int i = 0; i < 50 ; i++)
+    {
+        bank[0][i]=0;
+        bank[1][i]=0;
+        printf("\n-[ Account id: %d ]-    -[ balance is: %.2lf ]- ", (int)bank[1][i], bank[0][i]);
+    }
+    
+    
 }
